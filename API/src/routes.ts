@@ -11,5 +11,6 @@ routes.get("/", (req: Request, res: Response) => {
 // products
 routes.get("/get-products", productController.getProducts);
 routes.post("/create-product", multerConfig, productController.createProdutc);
+routes.get("/get-one/:id", productController.getOneProduct);
 
 export default routes;

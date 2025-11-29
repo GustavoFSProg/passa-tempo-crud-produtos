@@ -59,7 +59,7 @@ function CreateProduct() {
 
       navigate("/");
 
-      return alert("deu certo!!");
+      // return alert("deu certo!!");
     } catch (error) {
       return alert(error);
     }

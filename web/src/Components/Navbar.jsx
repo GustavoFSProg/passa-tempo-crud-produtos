@@ -11,6 +11,7 @@ const Container = styled.div`
   background: #ccccff;
 
   @media screen and (max-width: 800px) {
+    height: 100px;
   }
 `;
 
@@ -25,6 +26,12 @@ const ContainerLinks = styled.div`
   height: 50px;
 
   @media screen and (max-width: 800px) {
+    flex-direction: column;
+    height: 50px;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 18px;
+    margin-left: 100px;
   }
 `;
 

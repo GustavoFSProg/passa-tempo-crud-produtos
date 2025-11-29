@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import api from "./api";
-import { Link, useNavigate } from "react-router-dom";
+import api from "../../api";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import Navbar from "./Components/Navbar";
+import Navbar from "../../Components/Navbar";
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+  display: flex;
 
-  width: 50vw;
-  margin-left: -500px;
+  width: 30vw;
+  /* margin-left: -165px; */
   margin-top: 80px;
-  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 
   @media screen and (max-width: 800px) {
     /* width: 60%;
@@ -20,7 +20,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-left: -3px;
+    margin-left: -18px;
   }
 `;
 
@@ -29,11 +29,10 @@ const Card = styled.div`
   width: 90%;
   background: #e6e6e6;
   height: auto;
-  padding: 7px;
+  padding: 15px;
   margin-top: 20px;
   border-radius: 15px;
 
-  /* margin-left: -660px; */
   /* margin-top: 80px; */
 
   @media screen and (max-width: 800px) {
@@ -53,13 +52,15 @@ const Content = styled.div`
   height: "auto";
   justify-content: "center";
   align-items: center;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (max-width: 800px) {
     /* width: 60%;
     padding-top: 2px; */
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80vw;
     margin-left: -3px;
   }
 `;
@@ -78,27 +79,18 @@ const Img = styled.img`
   }
 `;
 
-function App() {
-  const [products, setProducts] = useState([]);
-
-  const navigate = useNavigate();
+function ProductProfile() {
+  const [products, setProducts] = useState({});
 
   async function getProducts() {
     try {
-      const { data } = await api.get("/get-products");
+      const id = localStorage.getItem("PRODUTO_ID");
+      const { data } = await api.get(`/get-one/${id}`);
 
       setProducts(data);
-
-      // return alert("deu certo");
     } catch (error) {
       return alert("ERRO", error);
     }
-  }
-
-  async function onClick(id) {
-    localStorage.setItem("PRODUTO_ID", id);
-
-    navigate("/profile");
   }
 
   useEffect(() => {
@@ -120,21 +112,18 @@ function App() {
           alignItems: "center",
         }}
       >
+        {/* {products} */}
         <div>
           <Container>
-            {products.map((items) => {
-              return (
-                <Card key={items.id}>
-                  <Content onClick={() => onClick(items.id)}>
-                    <p>{items.name}</p>
-                    <Img src={items.image} alt="imagem" />
-                    <p>Preço: R$ {items.price}</p>
-                    <br />
-                    <br />
-                  </Content>
-                </Card>
-              );
-            })}
+            <Card>
+              <Content>
+                <p style={{ width: "200px" }}>{products.name}</p>
+                <Img src={products.image} alt="imagem" />
+                <p>Preço: R$ {products.price}</p>
+                <br />
+                <br />
+              </Content>
+            </Card>
           </Container>
         </div>
       </div>
@@ -142,4 +131,4 @@ function App() {
   );
 }
 
-export default App;
+export default ProductProfile;
