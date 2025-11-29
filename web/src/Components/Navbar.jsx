@@ -56,9 +56,10 @@ const Menu = styled.div`
     margin-left: 88px;
     margin-top: 300px;
 
-    width: 150px;
+    width: 158px;
     height: 250px;
     position: absolute;
+    border-radius: 5px;
   }
 `;
 
@@ -77,7 +78,7 @@ const OpenContainer = styled.div`
     margin-left: 50px;
     display: flex;
     flex-direction: column;
-    background: lightblue;
+    background: #d9d9d9;
     color: black;
     width: 50px;
     align-items: center;
@@ -90,10 +91,10 @@ function Navbar() {
   return (
     <>
       <Container>
-        <OpenContainer style={{}} onClick={() => setOpen(true)}>
+        <OpenContainer onClick={() => setOpen(true)}>
           <span>-----</span>
-          <span>-----</span>
-          <span>-----</span>
+          <span style={{ marginTop: "-9px" }}>-----</span>
+          <span style={{ marginTop: "-9px" }}>-----</span>
         </OpenContainer>
         {open === false ? (
           <ContainerLinks>
@@ -122,51 +123,59 @@ function Navbar() {
                 height: "20px",
                 color: "yellow",
                 padding: "20px",
+                paddingTop: "2px",
                 flexDirection: "column",
               }}
               onClick={() => setOpen(false)}
             >
               <p>X</p>
+              <div
+                style={{
+                  display: "flex",
+                  marginLeft: "20px",
+                  flexDirection: "column",
+                }}
+              >
+                <Link
+                  style={{
+                    marginBottom: "10px",
+                    textDecoration: "none",
+                    color: "yellow",
+                  }}
+                  to="/"
+                >
+                  HOME
+                </Link>
 
-              <Link
-                style={{
-                  marginBottom: "10px",
-                  textDecoration: "none",
-                  color: "yellow",
-                }}
-                to="/"
-              >
-                HOME
-              </Link>
-
-              <Link
-                style={{
-                  marginBottom: "10px",
-                  textDecoration: "none",
-                  color: "yellow",
-                }}
-                to="/create-product"
-              >
-                CADASTRO
-              </Link>
-              <Link
-                style={{
-                  marginBottom: "10px",
-                  textDecoration: "none",
-                  color: "yellow",
-                }}
-              >
-                LOGIN
-              </Link>
-              <Link
-                style={{
-                  marginBottom: "10px",
-                  textDecoration: "none",
-                  color: "yellow",
-                }}
-              >
-                LOGOUT
-              </Link>
+                <Link
+                  style={{
+                    marginBottom: "10px",
+                    textDecoration: "none",
+                    color: "yellow",
+                  }}
+                  to="/create-product"
+                >
+                  CADASTRO
+                </Link>
+                <Link
+                  style={{
+                    marginBottom: "10px",
+                    textDecoration: "none",
+                    color: "yellow",
+                  }}
+                >
+                  LOGIN
+                </Link>
+                <Link
+                  style={{
+                    marginBottom: "10px",
+                    textDecoration: "none",
+                    color: "yellow",
+                  }}
+                >
+                  LOGOUT
+                </Link>
+              </div>
             </div>
           </Menu>
         )}
