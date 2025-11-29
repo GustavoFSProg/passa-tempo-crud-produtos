@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, Links } from "react-router-dom";
 import styled from "styled-components";
 
@@ -26,36 +27,107 @@ const ContainerLinks = styled.div`
   height: 50px;
 
   @media screen and (max-width: 800px) {
-    flex-direction: column;
+    /* flex-direction: column;
     height: 50px;
     justify-content: center;
     margin-top: 20px;
     padding-bottom: 18px;
-    margin-left: 100px;
+    margin-left: 100px; */
+    display: none;
+  }
+`;
+
+const Menu = styled.div`
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: green;
+  margin-right: 200px;
+
+  width: 150px;
+  height: 280px; */
+  display: none;
+
+  @media screen and (max-width: 800px) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background: green;
+    margin-right: 100px;
+    margin-top: 200px;
+
+    width: 150px;
+    height: 180px;
+  }
+`;
+
+const OpenContainer = styled.div`
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: green;
+  margin-right: 200px;
+
+  width: 150px;
+  height: 280px; */
+  display: none;
+
+  @media screen and (max-width: 800px) {
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    background: lightblue;
+    color: black;
+    width: 50px;
+    align-items: center;
   }
 `;
 
 function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
     <>
       <Container>
-        <ContainerLinks>
-          <Link style={{ textDecoration: "none", color: "darkblue" }} to="/">
-            HOME
-          </Link>
-          <Link
-            style={{ textDecoration: "none", color: "darkblue" }}
-            to="/create-product"
-          >
-            CADASTRO
-          </Link>
-          <Link style={{ textDecoration: "none", color: "darkblue" }}>
-            LOGIN
-          </Link>
-          <Link style={{ textDecoration: "none", color: "darkblue" }}>
-            LOGOUT
-          </Link>
-        </ContainerLinks>
+        <OpenContainer style={{}} onClick={() => setOpen(true)}>
+          <span>-----</span>
+          <span>-----</span>
+          <span>-----</span>
+        </OpenContainer>
+        {open === false ? (
+          <ContainerLinks>
+            <Link style={{ textDecoration: "none", color: "darkblue" }} to="/">
+              HOME
+            </Link>
+            <Link
+              style={{ textDecoration: "none", color: "darkblue" }}
+              to="/create-product"
+            >
+              CADASTRO
+            </Link>
+            <Link style={{ textDecoration: "none", color: "darkblue" }}>
+              LOGIN
+            </Link>
+            <Link style={{ textDecoration: "none", color: "darkblue" }}>
+              LOGOUT
+            </Link>
+          </ContainerLinks>
+        ) : (
+          <Menu>
+            <div
+              style={{
+                display: "flex",
+                width: "100px",
+                height: "20px",
+                color: "yellow",
+                padding: "20px",
+              }}
+              onClick={() => setOpen(false)}
+            >
+              X
+            </div>
+          </Menu>
+        )}
       </Container>
     </>
   );
