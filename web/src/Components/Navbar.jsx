@@ -50,14 +50,15 @@ const Menu = styled.div`
 
   @media screen and (max-width: 800px) {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
+    /* justify-content: flex-start; */
+    /* align-items: flex-start; */
     background: green;
-    margin-right: 100px;
-    margin-top: 200px;
+    margin-left: 88px;
+    margin-top: 300px;
 
     width: 150px;
-    height: 180px;
+    height: 250px;
+    position: absolute;
   }
 `;
 
@@ -121,10 +122,51 @@ function Navbar() {
                 height: "20px",
                 color: "yellow",
                 padding: "20px",
+                flexDirection: "column",
               }}
               onClick={() => setOpen(false)}
             >
-              X
+              <p>X</p>
+
+              <Link
+                style={{
+                  marginBottom: "10px",
+                  textDecoration: "none",
+                  color: "yellow",
+                }}
+                to="/"
+              >
+                HOME
+              </Link>
+
+              <Link
+                style={{
+                  marginBottom: "10px",
+                  textDecoration: "none",
+                  color: "yellow",
+                }}
+                to="/create-product"
+              >
+                CADASTRO
+              </Link>
+              <Link
+                style={{
+                  marginBottom: "10px",
+                  textDecoration: "none",
+                  color: "yellow",
+                }}
+              >
+                LOGIN
+              </Link>
+              <Link
+                style={{
+                  marginBottom: "10px",
+                  textDecoration: "none",
+                  color: "yellow",
+                }}
+              >
+                LOGOUT
+              </Link>
             </div>
           </Menu>
         )}
