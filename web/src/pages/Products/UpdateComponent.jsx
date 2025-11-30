@@ -110,14 +110,14 @@ function UpdateComponent() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const id = sessionStorage.getItem("ID");
 
-    console.log(id);
+    // console.log(id);
 
     try {
       // console.log(`Token:${token}`)
 
       // if (!token) return alert("Token Inválido, efetue o Login novamente!!");
+      const id = localStorage.getItem("PRODUTO_ID");
 
       const data = new FormData();
 
@@ -125,9 +125,9 @@ function UpdateComponent() {
       data.append("price", price);
       data.append("image", image);
 
-      await api.put(`/update-post/${id}`, data);
+      await api.put(`/update-product/${id}`, data);
 
-      navigate("/posts");
+      navigate("/");
 
       return alert("Edição realizado com sucesso!");
     } catch (error) {
