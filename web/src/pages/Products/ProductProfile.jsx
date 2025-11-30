@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Navbar from "../../Components/Navbar";
 import Moeda from "../../utilities/Moeda";
 import { formatCurrency } from "../../utilities/formatCurrency";
+import { FaTrashAlt } from "react-icons/fa";
 
 const Container = styled.div`
   display: flex;
@@ -151,7 +152,15 @@ function ProductProfile() {
                 <p style={{ width: "200px" }}>{products.name}</p>
                 <Img src={products.image} alt="imagem" />
                 <p> {formatCurrency(products.price)}</p>
-                <button onClick={() => setOpen(true)}>DELETAR</button>
+                <FaTrashAlt
+                  style={{
+                    fontSize: "26px",
+                    marginLeft: "250px",
+                    cursor: "pointer",
+                    color: "red",
+                  }}
+                  onClick={() => setOpen(true)}
+                />
 
                 <br />
                 <br />
