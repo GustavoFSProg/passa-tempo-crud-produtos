@@ -161,23 +161,51 @@ function ProductProfile() {
               <div
                 style={{
                   display: "flex",
-                  width: "700rem",
+                  width: "250px",
                   height: "150px",
-                  background: "green",
+                  background: "yellow",
                   color: "black",
                   flexDirection: "column",
+                  position: "absolute",
+                  padding: "20px",
+                  paddingBottom: "30px",
                 }}
               >
-                <h5>DESEJA DELETAR OU FECHAR?</h5>
                 <button
-                  style={{ background: "lightgreen" }}
+                  style={{
+                    marginLeft: "-200px",
+                    background: "none",
+                    border: "none",
+                    color: "black",
+                  }}
+                  onClick={() => setOpen(false)}
+                >
+                  X
+                </button>
+
+                <h4>DESEJA DELETAR OU FECHAR?</h4>
+                <button
+                  style={{
+                    background: "lightgreen",
+                    width: "150px",
+                    height: "auto",
+                    padding: "7px",
+                    marginLeft: "50px",
+                  }}
                   onClick={() => deleteProduct(products.id)}
                 >
                   DELETAR
                 </button>
                 <br />
                 <button
-                  style={{ background: "green", color: "white" }}
+                  style={{
+                    background: "green",
+                    width: "150px",
+                    height: "auto",
+                    padding: "8px",
+                    color: "white",
+                    marginLeft: "50px",
+                  }}
                   onClick={() => setOpen(false)}
                 >
                   FECHAR
@@ -188,7 +216,7 @@ function ProductProfile() {
                 style={{
                   display: "flex",
                   width: "200px",
-                  heigh: "50px",
+                  heigh: "auto",
                   background: "white",
                   color: "black",
                 }}
