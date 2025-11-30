@@ -121,7 +121,7 @@ function ProductProfile() {
               <Content>
                 <p style={{ width: "200px" }}>{products.name}</p>
                 <Img src={products.image} alt="imagem" />
-                <p>Preço: {formatCurrency(products.price)}</p>
+                <p> {formatCurrency(products.price)}</p>
                 <br />
                 <br />
               </Content>

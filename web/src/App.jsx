@@ -130,7 +130,7 @@ function App() {
                   <Content onClick={() => onClick(items.id)}>
                     <p>{items.name}</p>
                     <Img src={items.image} alt="imagem" />
-                    <p>Preço: {formatCurrency(items.price)}</p>
+                    <p> {formatCurrency(items.price)}</p>
                     <br />
                     <br />
                   </Content>
