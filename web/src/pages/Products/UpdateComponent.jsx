@@ -86,13 +86,9 @@ function UpdateComponent() {
   const [dados, setDados] = useState([]);
   const [datas, setDatas] = useState({});
 
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
   const [image, setImage] = useState([]);
-  const [author, setAuthor] = useState("");
-  const [desc, setDesc] = useState("");
-  // const [views, setViews] = useState('1')
-  // const [likes, setLikes] = useState('1')
 
   const navigate = useNavigate();
 
@@ -121,17 +117,13 @@ function UpdateComponent() {
     try {
       // console.log(`Token:${token}`)
 
-      if (!token) return alert("Token Inválido, efetue o Login novamente!!");
+      // if (!token) return alert("Token Inválido, efetue o Login novamente!!");
 
       const data = new FormData();
 
-      data.append("title", title);
-      data.append("text", text);
-      data.append("author", author);
+      data.append("name", name);
+      data.append("price", price);
       data.append("image", image);
-      // data.append('views', views)
-      // data.append('likes', likes)
-      data.append("desc", desc);
 
       await api.put(`/update-post/${id}`, data);
 
@@ -154,16 +146,16 @@ function UpdateComponent() {
   }
 
   async function ProfileHandle() {
-    const id = sessionStorage.getItem("ID");
+    const id = localStorage.getItem("PRODUTO_ID");
 
-    const { data } = await api.get(`/get-post/${id}`);
+    const { data } = await api.get(`/get-one/${id}`);
 
     setDatas(data);
 
-    setTitle(data.title);
-    setText(data.text);
-    setDesc(data.desc);
-    setAuthor(data.author);
+    setName(data.name);
+    setPrice(data.price);
+    // setDesc(data.desc);
+    // setAuthor(data.author);
 
     console.log(datas);
 
@@ -200,50 +192,33 @@ function UpdateComponent() {
         <br />
         <TextField
           id="outlined-controlled"
-          label="Título"
-          value={title}
+          label="Nome"
+          value={name}
           onChange={(event) => {
-            setTitle(event.target.value);
+            setName(event.target.value);
           }}
         />
         <br />
         <TextField
           id="outlined-controlled"
-          label="Texto"
-          value={text}
+          label="Preço"
+          value={price}
           multiline
           maxRows={18}
           style={{ width: "48rem" }}
           onChange={(event) => {
-            setText(event.target.value);
+            setPrice(event.target.value);
           }}
         />
         <br />
         <br />
-        <TextField
-          id="outlined-controlled"
-          label="Descrição"
-          value={desc}
-          onChange={(event) => {
-            setDesc(event.target.value);
-          }}
-        />
-        <br />
-        <TextField
-          id="outlined-controlled"
-          label="Autor"
-          value={author}
-          onChange={(event) => {
-            setAuthor(event.target.value);
-          }}
-        />
         <br />
         <br />
-        {dados === "OK" ? (
-          <button type="submit">Editar</button>
-        ) : (
+        {/* {dados === "OK" ? ( */}
+        <button type="submit">Editar</button>
+        {/* ) : (
           "Botao desabiitado!!"
-        )}
+        )} */}
         <br />
         <br />
         <br />
