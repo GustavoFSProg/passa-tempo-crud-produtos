@@ -107,8 +107,11 @@ function Navbar() {
             >
               CADASTRO
             </Link>
-            <Link style={{ textDecoration: "none", color: "darkblue" }}>
-              LOGIN
+            <Link
+              to="/update"
+              style={{ textDecoration: "none", color: "darkblue" }}
+            >
+              UPDATE
             </Link>
             <Link style={{ textDecoration: "none", color: "darkblue" }}>
               LOGOUT
@@ -163,8 +166,9 @@ function Navbar() {
                     textDecoration: "none",
                     color: "yellow",
                   }}
+                  to="/update"
                 >
-                  LOGIN
+                  UPDATE
                 </Link>
                 <Link
                   style={{
