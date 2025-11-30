@@ -89,4 +89,22 @@ async function getOneProduct(req: Request, res: Response) {
   }
 }
 
-export default { getProducts, getOneProduct, UpdateProdutc, createProdutc };
+async function deletarProduct(req: Request, res: Response) {
+  try {
+    const data = await prismaDB.produtos.delete({
+      where: { id: req.params.id },
+    });
+
+    return res.status(201).send(data);
+  } catch (error) {
+    return res.status(400).send({ msg: "Error!", error });
+  }
+}
+
+export default {
+  getProducts,
+  getOneProduct,
+  UpdateProdutc,
+  deletarProduct,
+  createProdutc,
+};

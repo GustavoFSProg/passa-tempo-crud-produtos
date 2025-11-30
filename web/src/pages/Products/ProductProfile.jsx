@@ -83,6 +83,7 @@ const Img = styled.img`
 
 function ProductProfile() {
   const [products, setProducts] = useState({});
+  const [open, setOpen] = useState(false);
 
   async function getProducts() {
     try {
@@ -92,6 +93,34 @@ function ProductProfile() {
       setProducts(data);
     } catch (error) {
       return alert("ERRO", error);
+    }
+  }
+
+  function Box() {
+    return (
+      <>
+        <div
+          style={{
+            display: "flex",
+            width: "200px",
+            heigh: "50",
+            background: "white",
+            color: "black",
+          }}
+        >
+          <button onClick={() => deleteProduct(products.id)}>DELETAR</button>
+        </div>
+      </>
+    );
+  }
+
+  async function deleteProduct(id) {
+    const del = await api.delete(`/delete-product/${id}`);
+
+    if (!del) {
+      alert("Error");
+    } else {
+      alert("Deletado!");
     }
   }
 
@@ -122,10 +151,42 @@ function ProductProfile() {
                 <p style={{ width: "200px" }}>{products.name}</p>
                 <Img src={products.image} alt="imagem" />
                 <p> {formatCurrency(products.price)}</p>
+                <button onClick={() => setOpen(true)}>DELETAR</button>
+
                 <br />
                 <br />
               </Content>
             </Card>
+            {open === true ? (
+              <div
+                style={{
+                  display: "flex",
+                  width: "200px",
+                  height: "150px",
+                  background: "green",
+                  color: "black",
+                }}
+              >
+                <button
+                  style={{ background: "green" }}
+                  onClick={() => deleteProduct(products.id)}
+                >
+                  DELETAR
+                </button>
+              </div>
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  width: "200px",
+                  heigh: "50px",
+                  background: "white",
+                  color: "black",
+                }}
+              >
+                <button onClick={() => setOpen(false)}>FECHAR</button>
+              </div>
+            )}
           </Container>
         </div>
       </div>

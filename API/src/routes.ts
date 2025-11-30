@@ -16,6 +16,12 @@ routes.put(
   multerConfig,
   productController.UpdateProdutc
 );
+
+routes.delete(
+  "/delete-product/:id",
+
+  productController.deletarProduct
+);
 routes.get("/get-one/:id", productController.getOneProduct);
 
 export default routes;
