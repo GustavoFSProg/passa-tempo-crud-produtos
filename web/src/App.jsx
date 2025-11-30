@@ -3,6 +3,8 @@ import api from "./api";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "./Components/Navbar";
+import Moeda from "./utilities/Moeda";
+import { formatCurrency } from "./utilities/formatCurrency";
 
 const Container = styled.div`
   display: grid;
@@ -128,7 +130,7 @@ function App() {
                   <Content onClick={() => onClick(items.id)}>
                     <p>{items.name}</p>
                     <Img src={items.image} alt="imagem" />
-                    <p>Preço: R$ {items.price}</p>
+                    <p>Preço: {formatCurrency(items.price)}</p>
                     <br />
                     <br />
                   </Content>

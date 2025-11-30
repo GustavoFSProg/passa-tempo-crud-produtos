@@ -3,6 +3,8 @@ import api from "../../api";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Navbar from "../../Components/Navbar";
+import Moeda from "../../utilities/Moeda";
+import { formatCurrency } from "../../utilities/formatCurrency";
 
 const Container = styled.div`
   display: flex;
@@ -119,7 +121,7 @@ function ProductProfile() {
               <Content>
                 <p style={{ width: "200px" }}>{products.name}</p>
                 <Img src={products.image} alt="imagem" />
-                <p>Preço: R$ {products.price}</p>
+                <p>Preço: {formatCurrency(products.price)}</p>
                 <br />
                 <br />
               </Content>
