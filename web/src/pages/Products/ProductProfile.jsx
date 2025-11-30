@@ -161,17 +161,26 @@ function ProductProfile() {
               <div
                 style={{
                   display: "flex",
-                  width: "200px",
+                  width: "700rem",
                   height: "150px",
                   background: "green",
                   color: "black",
+                  flexDirection: "column",
                 }}
               >
+                <h5>DESEJA DELETAR OU FECHAR?</h5>
                 <button
-                  style={{ background: "green" }}
+                  style={{ background: "lightgreen" }}
                   onClick={() => deleteProduct(products.id)}
                 >
                   DELETAR
+                </button>
+                <br />
+                <button
+                  style={{ background: "green", color: "white" }}
+                  onClick={() => setOpen(false)}
+                >
+                  FECHAR
                 </button>
               </div>
             ) : (
@@ -184,7 +193,7 @@ function ProductProfile() {
                   color: "black",
                 }}
               >
-                <button onClick={() => setOpen(false)}>FECHAR</button>
+                {/* <button onClick={() => setOpen(false)}>FECHAR</button> */}
               </div>
             )}
           </Container>
