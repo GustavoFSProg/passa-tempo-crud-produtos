@@ -157,7 +157,7 @@ function ProductProfile() {
                     fontSize: "26px",
                     marginLeft: "250px",
                     cursor: "pointer",
-                    color: "red",
+                    color: "darkred",
                   }}
                   onClick={() => setOpen(true)}
                 />
@@ -177,7 +177,8 @@ function ProductProfile() {
                   flexDirection: "column",
                   position: "absolute",
                   padding: "20px",
-                  paddingBottom: "30px",
+                  paddingBottom: "60px",
+                  borderRadius: "15px",
                 }}
               >
                 <button
